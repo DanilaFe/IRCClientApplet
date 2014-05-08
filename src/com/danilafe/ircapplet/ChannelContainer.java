@@ -9,6 +9,10 @@ import javax.swing.JTextField;
 
 public class ChannelContainer extends Container{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextArea log = new JTextArea();
 	private JTextField input = new JTextField();
 	private String name;

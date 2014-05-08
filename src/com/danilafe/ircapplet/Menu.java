@@ -40,6 +40,7 @@ public class Menu extends Applet implements ActionListener{
 	public void init(){
 		//Add the gui pane here.
 		add(gui);
+		this.setVisible(true);
 		
 		//Create the two containers for the main menu and set settings.
 		settings[0] = new Container();
