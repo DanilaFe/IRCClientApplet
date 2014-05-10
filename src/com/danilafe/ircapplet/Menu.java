@@ -20,7 +20,7 @@ public class Menu extends Applet implements ActionListener{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	boolean connected = true;
+	boolean connected = false;
 	Container[] settings = new Container[2];
 	ArrayList<ChannelContainer> channels= new ArrayList<ChannelContainer>();
 	JTabbedPane gui = new JTabbedPane();
@@ -34,6 +34,7 @@ public class Menu extends Applet implements ActionListener{
 	JButton connect = new JButton("Connect.");
 	JTextField console = new JTextField();
 	JTextArea feedback = new JTextArea();
+	Connection con;
 	
 	
 	@Override
@@ -77,6 +78,14 @@ public class Menu extends Applet implements ActionListener{
 		
 		if(e.getSource().equals(connect)){
 			if(connected){
+				if(! checkChannel(confields[2].getText())){
+					ChannelContainer c = new ChannelContainer();
+					c.setName(confields[2].getText());
+					channelpane.addTab(confields[2].getText(), c);
+				}
+			} else {
+				con = new Connection(6667, confields[0].getText());
+				con.initIRCConnection(confields[1].getText(), confields[1].getText());
 				if(! checkChannel(confields[2].getText())){
 					ChannelContainer c = new ChannelContainer();
 					c.setName(confields[2].getText());
